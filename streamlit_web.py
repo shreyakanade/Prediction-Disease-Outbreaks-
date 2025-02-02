@@ -4,6 +4,7 @@ Created on Mon Jan 20 16:42:31 2025
 
 @author: Dell
 """
+import logging
 import os
 import pickle
 import streamlit as st
