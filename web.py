@@ -2,7 +2,7 @@
 import os
 import pickle
 import streamlit as st
-from streamlit_option_menu import option_menu
+from streamlit_option_menu import option_menu 
 import numpy as np
 
 st.set_page_config(page_title="prediction of disease Outbreaks",layout='wide',page_icon='doctor')
