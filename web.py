@@ -6,10 +6,12 @@ from streamlit_option_menu import option_menu
 import numpy as np
 
 st.set_page_config(page_title="prediction of disease Outbreaks",layout='wide',page_icon='doctor')
+diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 
-diabetes_model = pickle.load(open('saved_models/diabetes_model.sav','rb'))
-heart_disease_model = pickle.load(open('saved_models/heart_model.sav','rb'))
-parkinsons_disease_model = pickle.load(open('saved_models/parkinsons_model.sav','rb'))
+heart_disease_model = pickle.load(open('heart_disease_model.sav', 'rb'))
+
+parkinsons_model = pickle.load(open('parkinsons_model.sav', 'rb'))
+
 
 with st.sidebar:
     selected = option_menu('Prediction of Disease outbeaks system',['Diabetes Prediction','Heart Disease Prediction','Parkinsons Disease Prediction'],menu_icon='hospital-fill',icons=['activity','heart','person'],default_index=0)
