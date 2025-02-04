@@ -1,16 +1,21 @@
-
 import os
-import pickle 
+import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
 import numpy as np
 
-st.set_page_config(page_title="prediction of disease Outbreaks",layout='wide',page_icon='doctor')
-diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
 
-heart_disease_model = pickle.load(open('heart_disease_model.sav', 'rb'))
 
-parkinsons_model = pickle.load(open('parkinsons_model.sav', 'rb'))
+# loading the saved models
+
+diabetes_model = pickle.load(open(r'diabetes_model.sav', 'rb'))
+# diabetes_model = pickle.load(open(r'C:\Users\Dell\Desktop\Multiple diseases prediction outbreaks\saved_models\diabetes_model.sav', 'rb'))
+
+heart_disease_model = pickle.load(open(r'heart_disease_model.sav', 'rb'))
+# heart_disease_model = pickle.load(open(r'C:\Users\Dell\Desktop\Multiple diseases prediction outbreaks\saved_models\heart_disease_model.sav', 'rb'))
+
+parkinsons_model = pickle.load(open(r'parkinsons_model.sav', 'rb'))
+# parkinsons_model = pickle.load(open(r'C:\Users\Dell\Desktop\Multiple diseases prediction outbreaks\saved_models\parkinsons_model.sav', 'rb'))
 
 
 with st.sidebar:
@@ -49,10 +54,10 @@ if selected == 'Diabetes Prediction':
 
 elif selected == 'Heart Disease Prediction':
     st.title("HEART DISEASE PREDICTION USING ML")
-    col1,col2,col3 = st.columns(3);
+    col1,col2,col3 = st.columns(3)
 
     with col1:
-        age = st.text_input("Age of the Person");
+        age = st.text_input("Age of the Person")
     with col2:
         sex = st.text_input("Gender of the Person")
     with col3:
@@ -66,17 +71,17 @@ elif selected == 'Heart Disease Prediction':
     with col1:
         restecg = st.text_input("restecg") 
     with col2:
-        thalach = st.text_input("THALACH");
+        thalach = st.text_input("THALACH")
     with col3:
-        exang = st.text_input("exang");
+        exang = st.text_input("exang")
     with col1:
-        oldpeak = st.text_input("oldpeak");
+        oldpeak = st.text_input("oldpeak")
     with col2:
         slope = st.text_input("slope")
     with col3:
-        ca = st.text_input("ca");
+        ca = st.text_input("ca")
     with col1:
-        thal = st.text_input("thal");
+        thal = st.text_input("thal")
     heart_diagnosis = ''
     if st.button('HEART TEST RESULT'):
         user_input = [age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]
@@ -151,10 +156,10 @@ elif selected=='Parkinsons Disease Prediction':
         user_input = [float(x) for x in user_input]
         user_input = np.array(user_input)
         new_input = user_input.reshape(1,-1)
-        park_prediction = parkinsons_disease_model.predict(new_input)
+        park_prediction = parkinsons_model.predict(new_input)
         if(park_prediction[0]==0):
             park_diagnosis = 'Person Doest`nt have ParkinSon`s disease'
         else:
             park_diagnosis = 'Person have ParkinSon`s disease'
         
-        st.success(park_diagnosis);
+        st.success(park_diagnosis)
